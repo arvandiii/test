@@ -4,11 +4,16 @@ const requireAuth = require("./utils/requireAuth");
 const Job = mongo.model("Job");
 
 const editJobInfo = async (ctx, params) => {
+  const { jobId } = params;
   const {
     user: { _id: userId }
   } = ctx;
-  await Job.create({ ...params, employerId: userId });
-  return {};
+  const job = await Job.findOneAndUpdate(
+    { _id: jobId },
+    { $set: { ...params, employerId: userId } },
+    { new: true }
+  );
+  return { job };
 };
 
 module.exports = {

@@ -7,8 +7,8 @@ const newJob = async (ctx, params) => {
   const {
     user: { _id: userId }
   } = ctx;
-  await Job.create({ ...params, employerId: userId });
-  return {};
+  const job = await Job.create({ ...params, employerId: userId });
+  return { job };
 };
 
 module.exports = {

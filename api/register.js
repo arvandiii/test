@@ -11,14 +11,14 @@ const register = async (ctx, params) => {
   if (userWithUsername) {
     throw new Error("username exist");
   }
-  await User.create({
+  const user = await User.create({
     type,
     username,
     passwordHash,
     ...(type === "EMPLOYEE" && { employeeInfo }),
     ...(type === "EMPLOYER" && { employerInfo })
   });
-  return {};
+  return { user };
 };
 
 module.exports = { func: register, validateParams: () => true };
