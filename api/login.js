@@ -9,11 +9,8 @@ const login = async (ctx, params) => {
   const { username, password } = params;
   const passwordHash = hash(password);
   const userWithUsername = await User.findOne({ username });
-  if (!userWithUsername) {
-    throw new Error("username incorrect");
-  }
-  if (userWithUsername.passwordHash !== passwordHash) {
-    throw new Error("password incorrect");
+  if (!userWithUsername || userWithUsername.passwordHash !== passwordHash) {
+    throw new Error("username or password incorrect");
   }
   const token = uuid();
   await UserToken.deleteMany({ userId: userWithUsername._id });
