@@ -1,5 +1,5 @@
-const mongo = require("../../utils/mongo");
-
+const mongo = require("./mongo");
+const Promise = require("bluebird");
 const Label = mongo.model("Label");
 
 const getLabelsByName = async names => {

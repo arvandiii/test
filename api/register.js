@@ -5,7 +5,7 @@ const _ = require("underscore");
 const User = mongo.model("User");
 
 const register = async (ctx, params) => {
-  const { type, username, password, emoloyeeInfo, employerInfo } = params;
+  const { type, username, password, employeeInfo, employerInfo } = params;
   const passwordHash = hash(password);
   const userWithUsername = await User.findOne({ username });
   if (userWithUsername) {
@@ -15,7 +15,7 @@ const register = async (ctx, params) => {
     type,
     username,
     passwordHash,
-    ...(type === "EMPLOYEE" && { emoloyeeInfo }),
+    ...(type === "EMPLOYEE" && { employeeInfo }),
     ...(type === "EMPLOYER" && { employerInfo })
   });
   return {};

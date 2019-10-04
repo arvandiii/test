@@ -7,10 +7,10 @@ const schema = new Schema({
   type: { type: String, enum: ["EMPLOYEE", "EMPLOYER"] },
   username: { type: String, required: true, unique: true },
   passwordHash: { type: String, required: true },
-  emoloyeeInfo: {
+  employeeInfo: {
     firstName: { type: String },
     lastName: { type: String },
-    birthDay: { type: Number },
+    birthday: { type: Number },
     gender: { type: String, enum: ["MALE", "FEMALE", "OTHER"] },
     skillIds: [{ type: ObjectId }]
   },
