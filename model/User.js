@@ -10,7 +10,7 @@ const schema = new Schema({
   emoloyeeInfo: {
     firstName: { type: String },
     lastName: { type: String },
-    birthYear: { type: Number },
+    birthDay: { type: Number },
     gender: { type: String, enum: ["MALE", "FEMALE", "OTHER"] }
   },
   employerInfo: {
