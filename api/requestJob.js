@@ -7,7 +7,7 @@ const Request = mongo.model("Request");
 const getJobRequests = async (ctx, params) => {
   const { jobId } = params;
   const job = await Job.findOne({
-    _id: body.jobId
+    _id: jobId
   });
   if (!job) {
     throw new Error("invalid job");
@@ -18,6 +18,6 @@ const getJobRequests = async (ctx, params) => {
 
 module.exports = {
   func: requireAuth(getJobRequests),
-  validateParams: () => True,
+  validateParams: () => true,
   permissionCheck: async (ctx, body) => ctx.user.type === "EMPLOYEE"
 };

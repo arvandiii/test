@@ -12,7 +12,7 @@ const getJobRequests = async (ctx, params) => {
 
 module.exports = {
   func: requireAuth(getJobRequests),
-  validateParams: () => True,
+  validateParams: () => true,
   permissionCheck: async (ctx, body) => {
     if (ctx.user.type !== "EMPLOYER") {
       return false;
