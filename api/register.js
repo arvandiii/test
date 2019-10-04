@@ -15,10 +15,10 @@ const register = async (ctx, params) => {
     type,
     username,
     passwordHash,
-    ...(type === 'EMPLOYEE' && { emoloyeeInfo }),
-    ...(type === 'EMPLOYER' && { employerInfo })
+    ...(type === "EMPLOYEE" && { emoloyeeInfo }),
+    ...(type === "EMPLOYER" && { employerInfo })
   });
   return {};
 };
 
-module.exports = register;
+module.exports = { func: register, validate: () => true };

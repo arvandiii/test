@@ -46,7 +46,11 @@ app.post("/api/:method", (req, res) => {
   const { method } = req.params;
   const { ctx, body } = req;
   console.log("api call", method, ctx, body);
-  getMethod(method)(ctx, body)
+  const { func, validate } = getMethod(method);
+  if (!validate(body)) {
+    return res.send({ err: "invalid params" });
+  }
+  func(ctx, body)
     .then(response => res.send({ res: response }))
     .catch(error => {
       console.log(error);

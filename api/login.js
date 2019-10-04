@@ -1,4 +1,3 @@
-
 const uuid = require("uuid/v4");
 const mongo = require("./utils/mongo");
 const hash = require("./utils/hash");
@@ -22,4 +21,4 @@ const login = async (ctx, params) => {
   return { token };
 };
 
-module.exports = login
+module.exports = { func: login, validate: (params) => params.username && params.password };
