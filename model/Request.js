@@ -5,7 +5,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const schema = new Schema({
   createdAt: { type: Date, default: new Date() },
   employeeId: { type: ObjectId, required: true },
-  job: { type: ObjectId, required: true },
+  jobId: { type: ObjectId, required: true },
   state: {
     type: String,
     enum: ["PENDING", "REJECTED", "ACCEPTED"],
