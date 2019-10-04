@@ -11,15 +11,15 @@ const schema = new Schema({
     firstName: { type: String },
     lastName: { type: String },
     birthDay: { type: Number },
-    gender: { type: String, enum: ["MALE", "FEMALE", "OTHER"] }
+    gender: { type: String, enum: ["MALE", "FEMALE", "OTHER"] },
+    skillIds: [{ type: ObjectId }]
   },
   employerInfo: {
     companyName: { type: String },
-    companyEstablishedYear: { type: Number },
+    companyEstablishedDate: { type: Date },
     address: { type: String },
     phoneNumber: { type: String }
-  },
-  skillIds: [{ type: ObjectId }]
+  }
 });
 
 module.exports = schema;
