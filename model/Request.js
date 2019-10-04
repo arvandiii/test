@@ -4,7 +4,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const schema = new Schema({
   createdAt: { type: Date, default: new Date() },
-  employee: { type: ObjectId, required: true },
+  employeeId: { type: ObjectId, required: true },
   job: { type: ObjectId, required: true },
   state: {
     type: String,

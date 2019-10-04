@@ -21,4 +21,4 @@ const login = async (ctx, params) => {
   return { token };
 };
 
-module.exports = { func: login, validate: (params) => params.username && params.password };
+module.exports = { func: login, validateParams: (params) => params.username && params.password };

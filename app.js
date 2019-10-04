@@ -42,13 +42,16 @@ const getMethod = method => {
   return api[method];
 };
 
-app.post("/api/:method", (req, res) => {
+app.post("/api/:method", async (req, res) => {
   const { method } = req.params;
   const { ctx, body } = req;
   console.log("api call", method, ctx, body);
-  const { func, validate } = getMethod(method);
-  if (!validate(body)) {
+  const { func, validateParams, permissionCheck } = getMethod(method);
+  if (validateParams && !validateParams(body)) {
     return res.send({ err: "invalid params" });
+  }
+  if (permissionCheck && !await permissionCheck(ctx, body)){
+    return res.send({ err: "permission error" });
   }
   func(ctx, body)
     .then(response => res.send({ res: response }))

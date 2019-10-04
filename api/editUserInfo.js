@@ -33,9 +33,8 @@ const editUserInfo = async (ctx, params) => {
       }
     });
   }
-  console.log("aaaa", params, query);
   await User.findOneAndUpdate({ _id: userId }, { $set: query });
   return {};
 };
 
-module.exports = { func: requireAuth(editUserInfo), validate: () => true };
+module.exports = { func: requireAuth(editUserInfo), validateParams: () => true };

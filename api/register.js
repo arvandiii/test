@@ -21,4 +21,4 @@ const register = async (ctx, params) => {
   return {};
 };
 
-module.exports = { func: register, validate: () => true };
+module.exports = { func: register, validateParams: () => true };
