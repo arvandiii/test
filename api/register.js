@@ -21,4 +21,20 @@ const register = async (ctx, params) => {
   return { user };
 };
 
-module.exports = { func: register, validateParams: () => true };
+module.exports = {
+  func: register,
+  validateParams: params =>
+    params.type &&
+    params.username &&
+    params.password &&
+    ((params.employeeInfo &&
+      params.employeeInfo.firstName &&
+      params.employeeInfo.lastName &&
+      params.employeeInfo.birthday &&
+      params.employeeInfo.gender) ||
+      (params.employerInfo &&
+        params.employerInfo.companyName &&
+        params.employerInfo.companyEstablishedDate &&
+        params.employerInfo.address &&
+        params.employerInfo.phoneNumber))
+};
